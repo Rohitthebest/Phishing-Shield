@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phishing Shield</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <main class="layout">
+      <section class="intro">
+        <p class="eyebrow">Phishing Checker</p>
+        <h1>Check if a website is phishing or not.</h1>
+        <p class="lede">Paste a website URL to get a simple result.</p>
+        <div class="sample-links">
+          <button
+            class="sample-link"
+            type="button"
+            data-url="https://www.openai.com/research"
+          >
+            Try a normal link
+          </button>
+          <button
+            class="sample-link"
+            type="button"
+            data-url="http://secure-paypal-login-update.xyz/verify/account"
+          >
+            Try a suspicious link
+          </button>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <form id="detector-form" class="detector-form">
+          <label for="url-input">URL to analyze</label>
+          <div class="input-row">
+            <input
+              id="url-input"
+              name="url"
+              type="text"
+              placeholder="https://example.com/login"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <button type="submit">Analyze</button>
+          </div>
+          <p class="hint">
+            This demo model inspects URL structure only. It does not fetch the
+            page, scan content, or check domain reputation feeds.
+          </p>
+        </form>
+
+        <section id="result-card" class="result-card hidden" aria-live="polite">
+          <div class="result-header">
+            <div>
+              <p class="result-label">Assessment</p>
+              <h2 id="risk-level">Safe</h2>
+              <p id="verdict-badge" class="verdict-badge verdict-safe">
+                Not phishing
+              </p>
+            </div>
+            <div class="score-ring">
+              <span id="score-value">0%</span>
+            </div>
+          </div>
+
+          <p id="summary-text" class="summary-text"></p>
+        </section>
+
+        <p id="error-text" class="error-text hidden"></p>
+      </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>

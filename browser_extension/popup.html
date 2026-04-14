@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phishing Shield</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f4f7fb;
+        --panel: #ffffff;
+        --ink: #18212f;
+        --muted: #5a6678;
+        --safe: #057a6a;
+        --danger: #c63d3d;
+        --warn: #e2871b;
+        --offline: #6b7280;
+      }
+
+      body {
+        width: 320px;
+        margin: 0;
+        padding: 16px;
+        font-family: Arial, Helvetica, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+      }
+
+      .panel {
+        background: var(--panel);
+        border: 1px solid #d6deea;
+        border-radius: 8px;
+        padding: 16px;
+      }
+
+      h1 {
+        margin: 0 0 6px;
+        font-size: 1.1rem;
+      }
+
+      p {
+        margin: 0;
+        line-height: 1.5;
+      }
+
+      .status {
+        display: inline-flex;
+        margin-top: 12px;
+        padding: 6px 10px;
+        border-radius: 8px;
+        font-weight: 700;
+        border: 1px solid transparent;
+      }
+
+      .safe {
+        color: var(--safe);
+        background: rgba(5, 122, 106, 0.12);
+      }
+
+      .phishing {
+        color: var(--danger);
+        background: rgba(198, 61, 61, 0.12);
+      }
+
+      .invalid {
+        color: var(--warn);
+        background: rgba(226, 135, 27, 0.12);
+      }
+
+      .error,
+      .skip {
+        color: var(--offline);
+        background: rgba(107, 114, 128, 0.12);
+      }
+
+      .meta {
+        margin-top: 12px;
+        color: var(--muted);
+        word-break: break-word;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="panel">
+      <h1>Phishing Shield</h1>
+      <p id="message">Checking this website...</p>
+      <div id="status" class="status skip">Waiting</div>
+      <p id="url" class="meta"></p>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>
